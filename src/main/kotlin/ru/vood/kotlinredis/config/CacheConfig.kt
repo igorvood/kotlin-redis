@@ -10,14 +10,14 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair
 import org.springframework.data.redis.serializer.RedisSerializer
 import ru.vood.kotlinredis.domain.SomeDto
-import ru.vood.kotlinredis.serializer.SomeDtoRedisSerializer
+
 import java.time.Duration
 
 @Configuration
 class CacheConfig {
 
     @Bean
-    fun redisCacheManagerBuilderCustomizer(someDtoRedisSerializer: SomeDtoRedisSerializer): RedisCacheManagerBuilderCustomizer {
+    fun redisCacheManagerBuilderCustomizer(): RedisCacheManagerBuilderCustomizer {
         return RedisCacheManagerBuilderCustomizer { builder: RedisCacheManagerBuilder ->
             builder
                 .withCacheConfiguration(
