@@ -20,7 +20,7 @@ class Run(val iSomeRepo: ISomeRepo) : CommandLineRunner{
 
 
         val begin = LocalDateTime.now()
-        val cnt = 100000
+        val cnt = 1000000
         (1 ..cnt)
             .map { iSomeRepo.getSomeData(it.toString())  }
 
@@ -29,7 +29,7 @@ class Run(val iSomeRepo: ISomeRepo) : CommandLineRunner{
 
         val between = ChronoUnit.MILLIS.between(begin, end)
 
-        logger.info("load $cnt continued  $between seconds")
+        logger.info("load $cnt continued  $between milli seconds. RPS ${cnt.toDouble()/(between.toDouble()/1000)}")
 
 
     }
