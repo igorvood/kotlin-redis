@@ -1,5 +1,8 @@
 package ru.vood.kotlinredis.domain
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class SomeDto(
     val id: String,
     val dataDecimal: Map<String, Double>,
@@ -7,6 +10,6 @@ data class SomeDto(
     val dataBoolean: Map<String, Boolean>,
     val uuid: String,
     val process_timestamp: Long,
-) : Identity {
+) : Identity, java.io.Serializable {
     override fun id(): String = id
 }
